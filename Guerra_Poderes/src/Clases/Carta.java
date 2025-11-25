@@ -3,7 +3,7 @@ package Clases;
  *
  * @author Tilines
  */
-public class Mob {
+public class Carta {
     private String nombre;
     private int vida;
     private int ataque;
@@ -11,10 +11,10 @@ public class Mob {
     private String elemento;
     private String debilidad;
 
-    public Mob() {
+    public Carta() {
     }
 
-    public Mob(String nombre, int vida, int ataque, int energia, String elemento, String debilidad) {
+    public Carta(String nombre, int vida, int ataque, int energia, String elemento, String debilidad) {
         this.nombre = nombre;
         this.vida = vida;
         this.ataque = ataque;
@@ -71,19 +71,19 @@ public class Mob {
         this.debilidad = debilidad;
     }
 
-    public boolean tieneVida(Mob objetivo) {
+    public boolean tieneVida(Carta objetivo) {
         return objetivo.getVida() > 0;
     }
 
-    public boolean esFuerte(Mob atacante, Mob objetivo) {
+    public boolean esFuerte(Carta atacante, Carta objetivo) {
         return atacante.getElemento().equals(objetivo.getDebilidad());
     }
 
-    public boolean esDebil(Mob atacante, Mob objetivo) {
+    public boolean esDebil(Carta atacante, Carta objetivo) {
         return atacante.getDebilidad().equals(objetivo.getElemento());
     }
 
-    public void Atacar(Mob atacante, Mob objetivo) {
+    public void Atacar(Carta atacante, Carta objetivo) {
         int vida = objetivo.getVida();
         int ataque = atacante.getAtaque();
         double temp;
