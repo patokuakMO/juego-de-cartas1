@@ -4,10 +4,20 @@
  */
 package Clases;
 
-/**
- *
- * @author ISLENA
- */
 public class ArbolDecision {
-    
+
+    private NodoArbol raiz;
+
+    public ArbolDecision() {
+        this.raiz = null;
+    }
+
+    public void setRaiz(NodoArbol raiz) {
+        this.raiz = raiz;
+    }
+
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
 }
+

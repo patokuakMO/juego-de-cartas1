@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
 
-/**
- *
- * @author ISLENA
- */
+import java.util.ArrayList;
+
 public class ListaCartas {
-    
+
+    private ArrayList<Carta> cartas;
+
+    public ListaCartas() {
+        cartas = new ArrayList<>();
+    }
+
+    public void agregarCarta(Carta carta) {
+        cartas.add(carta);
+    }
+
+    public Carta obtener(int index) {
+        return cartas.get(index);
+    }
+
+    public int tamaño() {
+        return cartas.size();
+    }
 }
+
