@@ -1,6 +1,6 @@
 package Clases;
 /**
- *
+ *Representa una carta tipo Pokémon con atributos básicos.
  * @author Tilines
  */
 public class Carta {
@@ -71,4 +71,10 @@ public class Carta {
         this.debilidad = debilidad;
     }
 
+    
+    @Override
+    public String toString() {
+        return nombre + " [HP: " + vida + ", ATK:" + ataque + ", ENG:" + energia +
+               ", Elem:" + elemento + ", Deb:" + debilidad + "]";
+    }
 }

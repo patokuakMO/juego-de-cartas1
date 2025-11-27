@@ -21,5 +21,9 @@ public class ListaCartas {
     public int tamaño() {
         return cartas.size();
     }
+    
+        public boolean estaVacia() {
+        return cartas.isEmpty();
+    }
 }
 

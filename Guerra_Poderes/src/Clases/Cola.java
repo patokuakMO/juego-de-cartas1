@@ -1,5 +1,8 @@
 package Clases;
-
+/**
+ *Cola implementada con nodos enlazados (FIFO).
+ * @author Tilines
+ */
 public class Cola<T> {
 
     private class NodoCola {
@@ -66,15 +69,4 @@ public class Cola<T> {
         return count;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        NodoCola aux = frente;
-        while (aux != null) {
-            sb.append(aux.dato).append(" -> ");
-            aux = aux.siguiente;
-        }
-        sb.append("NULL");
-        return sb.toString();
-    }
 }

@@ -1,5 +1,8 @@
 package Clases;
-
+/**
+ *  Representa un jugador con mazo, cola y pila.
+ * @author Tilines
+ */
 public class Jugador {
 
     private String nombre;
@@ -34,7 +37,7 @@ public class Jugador {
     }
 
     public boolean tieneCartas(ListaCartas mazo){
-        return mazo.tamaño() != 0;
+        return !mazo.estaVacia();
     }
 }
 
