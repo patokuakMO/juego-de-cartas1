@@ -13,6 +13,11 @@ public class ListaCartas {
     public void agregarCarta(Carta carta) {
         cartas.add(carta);
     }
+    
+    public ArrayList<Carta> eliminarCarta(Carta carta){
+        cartas.remove(carta);
+        return cartas;
+    }
 
     public Carta obtener(int index) {
         return cartas.get(index);
