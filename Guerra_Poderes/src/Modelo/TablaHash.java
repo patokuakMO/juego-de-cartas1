@@ -1,77 +1,96 @@
 package Modelo;
 
 /**
- * Guarda estadísticas del jugador.
- * @author Tilines
- *Complejidad BIG-O:
- * - getters y setters -> O(1)
+ * Implementación simple de una tabla hash.
+ * Usa un arreglo de listas para resolver colisiones.
+ * 
+ * BIG-O:
+ *  - insertar -> O(1) promedio
+ *  - buscar -> O(1) promedio
+ *  - eliminar -> O(1) promedio
  */
 public class TablaHash {
 
-    // Jugador al que pertenecen los datos
-    private Jugador jugador;
+    // Nodo para la lista en cada cubeta
+    private class Nodo {
+        String clave;
+        int valor;
+        Nodo siguiente;
 
-    // Número de rondas ganadas
-    private int rondasGanadas;
+        public Nodo(String clave, int valor) {
+            this.clave = clave;
+            this.valor = valor;
+        }
+    }
 
-    // Cartas que el jugador ha jugado
-    private ListaCartas cartasJugadas;
-
-    // Cartas que el jugador ha derrotado
-    private ListaCartas cartasDerrotadas;
-
-    // Poder total ganado
-    private int poderGanado;
+    private Nodo[] tabla;
+    private int capacidad = 20; // tamaño del array
 
     public TablaHash() {
+        tabla = new Nodo[capacidad];
     }
 
-    public TablaHash(Jugador jugador, int rondasGanadas, ListaCartas cartasJugadas,
-                     ListaCartas cartasDerrotadas, int poderGanado) {
-        this.jugador = jugador;
-        this.rondasGanadas = rondasGanadas;
-        this.cartasJugadas = cartasJugadas;
-        this.cartasDerrotadas = cartasDerrotadas;
-        this.poderGanado = poderGanado;
+    // Función hash básica
+    private int hash(String clave) {
+        int h = 0;
+        for (char c : clave.toCharArray()) {
+            h += c;
+        }
+        return h % capacidad;
     }
 
-    public Jugador getJugador() {
-        return jugador;
+    // Insertar o actualizar
+    public void put(String clave, int valor) {
+        int index = hash(clave);
+        Nodo actual = tabla[index];
+
+        // Buscar si ya existe
+        while (actual != null) {
+            if (actual.clave.equals(clave)) {
+                actual.valor = valor; // actualizar
+                return;
+            }
+            actual = actual.siguiente;
+        }
+
+        // Insertar al inicio
+        Nodo nuevo = new Nodo(clave, valor);
+        nuevo.siguiente = tabla[index];
+        tabla[index] = nuevo;
     }
 
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+    // Obtener valor por clave
+    public int get(String clave) {
+        int index = hash(clave);
+        Nodo actual = tabla[index];
+
+        while (actual != null) {
+            if (actual.clave.equals(clave)) {
+                return actual.valor;
+            }
+            actual = actual.siguiente;
+        }
+
+        return -1; // No encontrado
     }
 
-    public int getRondasGanadas() {
-        return rondasGanadas;
-    }
+    // Eliminar entrada
+    public void remove(String clave) {
+        int index = hash(clave);
+        Nodo actual = tabla[index];
+        Nodo anterior = null;
 
-    public void setRondasGanadas(int rondasGanadas) {
-        this.rondasGanadas = rondasGanadas;
-    }
-
-    public ListaCartas getCartasJugadas() {
-        return cartasJugadas;
-    }
-
-    public void setCartasJugadas(ListaCartas cartasJugadas) {
-        this.cartasJugadas = cartasJugadas;
-    }
-
-    public ListaCartas getCartasDerrotadas() {
-        return cartasDerrotadas;
-    }
-
-    public void setCartasDerrotadas(ListaCartas cartasDerrotadas) {
-        this.cartasDerrotadas = cartasDerrotadas;
-    }
-
-    public int getPoderGanado() {
-        return poderGanado;
-    }
-
-    public void setPoderGanado(int poderGanado) {
-        this.poderGanado = poderGanado;
+        while (actual != null) {
+            if (actual.clave.equals(clave)) {
+                if (anterior == null) {
+                    tabla[index] = actual.siguiente;
+                } else {
+                    anterior.siguiente = actual.siguiente;
+                }
+                return;
+            }
+            anterior = actual;
+            actual = actual.siguiente;
+        }
     }
 }
