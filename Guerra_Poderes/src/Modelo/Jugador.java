@@ -6,6 +6,7 @@ package Modelo;
 public class Jugador {
 
     private String nombre;
+    private int rondasG;
     private ListaCartas mazo;
     private Cola<Carta> colaEspera;
     private Pila pilaDescarte;
@@ -15,6 +16,7 @@ public class Jugador {
         
     public Jugador(String nombre) {
         this.nombre = nombre;
+        this.rondasG = 0;
         this.mazo = new ListaCartas();
         this.colaEspera = new Cola<>();
         this.pilaDescarte = new Pila();
@@ -24,6 +26,14 @@ public class Jugador {
         return nombre;
     }
 
+    public int getRondasG() {
+        return rondasG;
+    }
+
+    public void setRondasG(int rondasG) {
+        this.rondasG = rondasG;
+    }
+    
     public ListaCartas getMazo() {
         return mazo;
     }

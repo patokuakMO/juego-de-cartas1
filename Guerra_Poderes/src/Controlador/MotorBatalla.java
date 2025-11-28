@@ -4,7 +4,7 @@ import Modelo.Carta;
 
 public class MotorBatalla {
 
-    public static void atacar(Carta atacante, Carta objetivo) {
+    public void atacar(Carta atacante, Carta objetivo) {
 
         int ataque = atacante.getAtaque();
         double daño;
@@ -18,7 +18,7 @@ public class MotorBatalla {
             daño = ataque;
         }
 
-        if (objetivo.getVida() > 0) {
+        if (objetivo.getVida() > 0 && atacante.getEnergia() > 0) {
             // Aplicar daño
             objetivo.setVida(objetivo.getVida() - (int) daño);
         }
