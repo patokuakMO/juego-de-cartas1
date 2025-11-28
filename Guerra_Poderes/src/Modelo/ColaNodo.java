@@ -1,5 +1,8 @@
 package Modelo;
-
+/*
+*   Está cola es para manejar de los turnos
+*   del jugador y del computador
+*/
 public class ColaNodo {
 
     private Jugador jugador;
