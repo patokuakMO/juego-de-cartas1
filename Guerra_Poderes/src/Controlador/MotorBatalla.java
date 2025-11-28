@@ -18,11 +18,16 @@ public class MotorBatalla {
             daño = ataque;
         }
 
-        // Aplicar daño
-        objetivo.setVida(objetivo.getVida() - (int) daño);
-
-        // Consumir energía
-        atacante.setEnergia(atacante.getEnergia() - 1);
+        if (objetivo.getVida() > 0) {
+            // Aplicar daño
+            objetivo.setVida(objetivo.getVida() - (int) daño);
+        }
+        if (atacante.getEnergia() != 0){
+            // Consumir energía
+            atacante.setEnergia(atacante.getEnergia() - 1);
+        } else {
+            atacante.setEnergia(1);
+        }
 
         if (objetivo.getVida() <= 0) {
             System.out.println(objetivo.getNombre() + " ha sido derrotado.");
