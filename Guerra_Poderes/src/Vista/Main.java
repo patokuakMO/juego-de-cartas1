@@ -13,7 +13,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Pila pilaDerrotadas = new Pila();
+        int contadorJugador = 0;
         Pila pilaDerrotadasCPU = new Pila();
+        int contadorCPU = 0;
 
         // -----------------------------
         // 1. CREAR JUGADORES
@@ -98,12 +100,14 @@ public class Main {
             // Si la carta del jugador muere
             if (cartaJugador.getVida() <= 0) {
                 System.out.println("\nPerdiste la Batalla");
+                contadorJugador++;
                 pilaDerrotadas.push(cartaJugador);
                 jugador.getMazo().eliminarCarta(cartaJugador);// quitamos la varta perdedora del mazo
                 cartaJugador = jugador.getMazo().obtener(indice + 1); //siguiente carta
             } else // Si la carta de la CPU muere
             if (cartaCPU.getVida() <= 0) {
                 System.out.println("\nGanaste la Batalla");
+                contadorCPU++;
                 pilaDerrotadasCPU.push(cartaCPU);
                 jugador.getMazo().eliminarCarta(cartaCPU);
                 cartaCPU = computadora.getMazo().obtener(aleatoria); // saca nueva carta
@@ -115,5 +119,8 @@ public class Main {
                 && cartaJugador != null
                 && cartaCPU != null);
         sc.close();
+        //===========================FINAL============================
+        System.out.println(jugador.getNombre()+" Batallas Ganadas: "+contadorCPU);
+        System.out.println(jugador.getNombre()+" Batallas perdidas: "+contadorJugador);
     }
 }
