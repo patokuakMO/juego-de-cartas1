@@ -5,28 +5,24 @@ import Modelo.Carta;
 public class MotorBatalla {
 
     public void atacar(Carta atacante, Carta objetivo) {
-
         int ataque = atacante.getAtaque();
-        double daño;
+        int dano;
 
         // Relación elemental
         if (atacante.getElemento().equals(objetivo.getDebilidad())) {
-            daño = ataque * 1.2;
+            dano = (int)(ataque * 1.2);
         } else if (atacante.getDebilidad().equals(objetivo.getElemento())) {
-            daño = ataque * 0.7;
+            dano = (int)(ataque * 0.7);
         } else {
-            daño = ataque;
+            dano = ataque;
         }
 
         if (objetivo.getVida() > 0 && atacante.getEnergia() > 0) {
-            // Aplicar daño
-            objetivo.setVida(objetivo.getVida() - (int) daño);
-        }
-        if (atacante.getEnergia() != 0){
-            // Consumir energía
+            objetivo.setVida(objetivo.getVida() - dano);
+            System.out.println(atacante.getNombre() + " ataca a " + objetivo.getNombre() + " causando " + dano + " de daño.");
+            System.out.println("Vida restante de " + objetivo.getNombre() + ": " + objetivo.getVida());
+
             atacante.setEnergia(atacante.getEnergia() - 1);
-        } else {
-            atacante.setEnergia(1);
         }
 
         if (objetivo.getVida() <= 0) {
