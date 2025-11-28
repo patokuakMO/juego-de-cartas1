@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 /**
  *Representa una carta tipo Pokémon con atributos básicos.
  * @author Tilines

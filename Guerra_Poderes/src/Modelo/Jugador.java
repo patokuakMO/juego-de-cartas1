@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 /**
  *  Representa un jugador con mazo, cola y pila.
  * @author Tilines

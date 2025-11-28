@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 /**
  *Pila simple para guardar cartas descartadas (LIFO).
  * @author Tilines

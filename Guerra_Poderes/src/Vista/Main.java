@@ -1,6 +1,9 @@
-package Main;
+package Vista;
 
-import Clases.*;
+import Modelo.Carta;
+import Modelo.JuegoGuerra;
+import Controlador.MotorBatalla;
+import Modelo.Jugador;
 import java.util.Scanner;
 
 public class Main {

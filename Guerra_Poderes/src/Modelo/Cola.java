@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 /**
  *Cola implementada con nodos enlazados (FIFO).
  * @author Tilines

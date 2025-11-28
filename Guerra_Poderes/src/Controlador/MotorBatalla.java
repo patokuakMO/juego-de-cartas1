@@ -1,4 +1,6 @@
-package Clases;
+package Controlador;
+
+import Modelo.Carta;
 
 public class MotorBatalla {
 

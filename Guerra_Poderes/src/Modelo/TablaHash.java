@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 /**
  *Guarda estadísticas del jugador.
  * @author Tilines
